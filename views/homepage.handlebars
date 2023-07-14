@@ -1,0 +1,157 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/homepagestyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monda&display=swap" rel="stylesheet">
+    <title>Jam Session: Home</title>
+</head>
+
+{{!-- Instead having conversations and messages on their own page could we use a modal? --}}
+
+<body>
+    <div class="comment-popup">
+        <div class="modal-header">
+            <h3>Comments</h3>
+            <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form class="comment-form">
+                <label for="comment">Add your comment:</label>
+                <input id="comment" type="text" n />
+                {{!-- <textarea id="comment" name="comment"></textarea> --}}
+                <button type="submit">Submit</button>
+            </form>
+            <div class="comments-list">
+
+            </div>
+        </div>
+    </div>
+
+    {{!-- Navbar --}}
+    {{!-- <div class="container">
+        <div class="logo">
+            <h1>Jam Session</h1>
+            
+        </div>
+        <form class = "searchBar" action="/search" method="GET">
+        <input class = "search" type="text" name="q" placeholder="Search...">
+        <button class = "search-btn" type="submit">Search</button>
+        </form>
+         {{#if logged_in}}
+        <a href="/user/{{id}}"><button class="profile-btn">Profile</button></a>
+        {{/if}}
+        <a href = "/conversations"><button class = "messages-btn">Messages</button></a>
+        <a><button class="logout-btn" id="logout">Log Out</button></a>
+    </div> --}}
+    <nav class="navbar fixed-top navbar-expand-md">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-start">
+            <a class="navbar-brand logo" href="#">Jam Session</a>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="collapse navbar-collapse" id="navbarNav2">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
+                </form>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav1, #navbarNav2, #navbarNav3"
+              aria-controls="navbarNav1, navbarNav2, navbarNav3" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav3">
+                <ul class="navbar-nav">
+                    {{#if logged_in}}
+                     <li class="nav-item active">
+                        <a class="nav-link" href="/conversations">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user/{{id}}">Profile</a>
+                    </li>
+                    {{/if}}
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout" href="#">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+  
+
+    <div class="containerAside">
+        <aside>
+             <p id="user-welcome">Welcome, <span class="username">{{username}}</span>!</p>
+            <h2><span class="sep-font">Today's Song Picks</span></h2>
+            <hr>
+            {{#each random_Songs.random_Songs as |randomSong|}}
+            <p>{{randomSong.[0]}} - {{randomSong.[1]}}</p>
+            {{/each}}
+            <hr>
+            <h2><span class="sep-font">Today's Artist Picks</span></h2>
+            {{#each random_Artists.random_Artists as |randomArtist|}}
+            <p>{{randomArtist}}</p>
+            {{/each}}
+        </aside>
+
+        <div class="playlist-grid">
+            {{#each playlists as |playlist|}}
+            <div class="playlist-grid-item">
+                <img src="{{playlist.image_url}}" alt="{{playlist.name}}">
+                <div class="playlist-info">
+                    <h3><a href="{{playlist.playlist_url}}" target="_blank"><span
+                                class="play-name">{{playlist.name}}</span></a></h3>
+                    <p>{{playlist.description}}</p>
+                    <div class="playlist-stats">
+                        <div class="likes">
+                            <button class="like-btn" data-playlist-id="{{playlist.playlist_id}}">
+                                <i class="fa-sharp fa-regular fa-heart" data-playlist-id="{{playlist.playlist_id}}"></i>
+                            </button>
+                            <span class="num-likes">{{playlist.likes}}</span>
+                        </div>
+                        <div class="comments">
+                            <button class="comment-btn" data-playlist-id="{{playlist.playlist_id}}">
+                                <i class="fa-sharp fa-regular fa-comment"
+                                    data-playlist-id="{{playlist.playlist_id}}"></i>
+                            </button>
+
+
+                            <span class="num-comments">{{playlist.comments}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+
+    <script src="/logout.js"></script>
+
+    <script src="/likebutton.js"></script>
+    <script src="/comments.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Search on pressing Enter key
+    document.getElementById('search-input').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        // Perform search action here
+        console.log('Search:', this.value);
+      }
+    });
+  </script>
+  </body>
