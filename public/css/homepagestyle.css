@@ -49,6 +49,22 @@ body::-webkit-scrollbar {
     font-size: 18px;
   }
 
+  .nav-item{
+    padding-left: 24px;
+  }
+
+  .form-control{
+    background-color: transparent;
+    color: #FFF;
+    border: solid 2px #FFF;
+    border-radius: 20px;
+}
+
+#search-input::placeholder {
+    color: white;
+  }
+
+
 .logo {
     font-family: 'League Spartan', sans-serif;
     font-weight: 500;
@@ -71,7 +87,7 @@ body::-webkit-scrollbar {
 #info-container{
     width: 25%;
     height: 100%;
-    background-color: #ffffff50;
+    /* background-color: #ffffff50; */
     border-radius: 20px;
     margin-left: 40px;
     padding: 20px;
@@ -92,7 +108,7 @@ body::-webkit-scrollbar {
     /* overflow-y:auto; */
 }
 
-#user-welcome {
+/* #user-welcome {
     font-size: 15px;
     color: #fff;
     align-content: center;
@@ -101,31 +117,8 @@ body::-webkit-scrollbar {
 .username {
     color: #fff;
     /* text-shadow: 1px 1px 10px #7c2ae878; */
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.logout-btn,
-.profile-btn,
-.messages-btn,
-.search-btn {
-    font-family: 'Monda', sans-serif;
-    /* background-color: #243a6ca0; */
-    background-color: #d588e13e;
-    padding: 0px 15px;
-    font-size: 17px;
-    border: none;
-    border-radius: 20px;
-    /* color: #5fe4fbc6; */
-    color: #fff;
     
-    
-}
 
-.logout-btn {
-    margin-right: 50px;
-    /* margin-left: -50px; */
-}
 
 button:active {
     background: #7484e7;
@@ -221,7 +214,7 @@ button:hover {
 
 .title hr{
     background-color: #fff;
-    width: 75%;
+    width: 100%;
 }
 
 .playlist-stats {
@@ -230,21 +223,6 @@ button:hover {
     
 }
 
-.searchBar{
-    padding: 0px 15px;
-
-}
-
-.search {
-  background-color: rgba(255, 255, 255, 0.317);
-  border: none;
-  color: #fff;
-}
-
-.search::placeholder {
-    color: #fff;
-    margin-left: 5px;
-  }
 
 .likes {
     display: flex;
@@ -310,27 +288,35 @@ a {
     display: none;
     position: fixed;
     top: 50%;
-    left: 60%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    padding: 20px;
-    background-image: linear-gradient(to left, #d8bbec, #bbc0e4);
-    box-shadow: 0 0 20px #43245c;
-    color: #24396c;
+    background-image: linear-gradient(to right, #7C2AE8, #7C2AE8);
+    border-radius: 10px;
+    color: #ffffff;
     z-index: 9999;
 }
 
-.comment-btn {
+.modal-color{
+    height:100%;
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff70;
+    border-radius: 10px;
+}
+
+.comment-form button {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    color: white;
+    border: solid white;
+    border-radius: 5px;
 }
 
 .modal-header {
     text-align: center;
     font-size: 22px;
-    text-shadow: 1px 1px #0d050f;
-    color: #c81ce3;
-    opacity: 70%;
+    opacity: 100%;
 }
 
 .comments-list {
@@ -343,7 +329,20 @@ a {
     right: 10px;
     font-size: 30px;
     cursor: pointer;
+    color: #fff;
 
+}
+
+
+
+
+
+#comment{
+    background-color: transparent;
+    border: none;
+    border: solid #fff;
+    border-radius: 5px;
+    color: #FFF;
 }
 
 @media only screen and (max-width: 600px) {
@@ -368,5 +367,8 @@ a {
     }
     .playlist-grid-item {
         min-width: 80%;
+    }
+    .comment-popup {
+        width: 90%;
     }
 }

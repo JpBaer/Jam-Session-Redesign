@@ -1,11 +1,21 @@
 body {
     font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
     margin: 0;
     padding: 0;
     /* background-image: linear-gradient(to left, #43245c, #b66aeb, #7484e7, #24396c); */
-    background-image: linear-gradient(to right, #00C4CC, #7C2AE8)
+    background-image: linear-gradient(to right, #00C4CC, #7C2AE8);
 
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  
 }
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+
 
 .navbar {
     position: fixed;
@@ -30,22 +40,108 @@ body {
   }
 
   .navbar-brand {
-    margin-left: 15px;
+    margin-left: 25px;
   }
 
   .navbar-nav {
-    margin-right: 15px;
+    margin-right: 25px;
+    font-family: 'League Spartan', sans-serif;
+    font-size: 18px;
   }
 
-  .logo {
-    font-family: 'Staatliches', cursive;
-    font-size: 50px;
-    padding-left: 50px;
-    text-shadow: 1px 1px #0d050f;
-    color: #ffffff;
-    opacity: 100%;
+  .nav-item{
+    padding-left: 24px;
+  }
+
+  .form-control{
+    background-color: transparent;
+    color: #FFF;
+    border: solid 2px #FFF;
+    border-radius: 20px;
 }
 
+#search-input::placeholder {
+    color: white;
+  }
+
+
+.logo {
+    font-family: 'League Spartan', sans-serif;
+    font-weight: 500;
+    font-size: 50;
+    /* padding-left: 50px; */
+    /* text-shadow: 1px 1px 5px #0d050f1b; */
+    color: #ffffff;
+    opacity: 100%;
+    padding-bottom: -200px;
+    /* border-bottom: solid 1px white; */
+}
+
+#main-container{
+    padding-top: 80px;
+    display: flex;
+    height: 100%;
+    position: relative
+}
+
+#info-container{
+    width: 25%;
+    height: 100%;
+    /* background-color: #ffffff50; */
+    border-radius: 20px;
+    margin-left: 40px;
+    padding: 20px;
+    color: white;
+    position:fixed;
+    /* overflow-y: auto */
+}
+
+#right-side{
+    width:66%;
+   height: 100%;
+   /* border: solid white; */
+   border-radius: 20px;
+   margin-left: 30%;
+   margin-right: 20px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-evenly;
+}
+
+#playlist-container{
+    height: 100%;
+    /* border: solid white; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* overflow-y:auto; */
+}
+
+
+
+#user-info{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    color: #FFF;
+    
+}
+
+.profile-button{
+    background-color: transparent;
+    border: none;
+    border: solid 1px #fff;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: #fff
+}
+
+#spotify-info{
+    padding-left: 20px;
+    /* margin-bottom: 40px; */
+}
 
 a {
     text-decoration: none;
@@ -67,68 +163,11 @@ h1:hover:after {
     text-decoration: none;
 }
 
-#user-welcome {
-    font-size: 20px;
-    color: #c81ce3b0;
-    font-family: 'Monda', sans-serif;
-    text-shadow: .5px .5px #43245c;
-}
-
-.username {
-    font-family: 'Staatliches', cursive;
-    color: #5fe4fbda;
-    font-size: 30px;
-}
-
-.messages-btn{
-    font-family: 'Monda', sans-serif;
-    /* background-color: #243a6ca0; */
-    background-color: #d588e13e;
-    padding: 0px 15px;
-    font-size: 17px;
-    border: none;
-    border-radius: 20px;
-    /* color: #5fe4fbc6; */
-    color: #fff;  
-}
-
-.messages-btn:active {
-    background: #7484e7;
-    outline: none;
-    color: azure;
-}
-
-.messages-btn:hover {
-    background-color: #5fe4fbda;
-}
-
-.logout-btn {
-    font-family: 'Monda', sans-serif;
-    /* background-color: #243a6ca0; */
-    background-color: #d588e13e;
-    padding: 0px 15px;
-    font-size: 17px;
-    border: none;
-    border-radius: 20px;
-    /* color: #5fe4fbc6; */
-    color: #fff;
-    margin-right: 50px;
-}
-
-.logout-btn:active {
-    background: #7484e7;
-    outline: none;
-    color: azure;
-}
-
-.logout-btn:hover {
-    background-color: #5fe4fbda;
-}
 
 #profile-picture {
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
+    border-radius: 10%;
+    height: 200px;
+    width: 200px;
     margin-bottom: 10px;
 }
 
@@ -142,11 +181,40 @@ h1:hover:after {
 }
 
 .playlist-grid-item {
-    padding: 20px;
+    position:relative;
+    padding: 15px;
+    margin-bottom: 30px;
     text-align: center;
-    width: 250px;
-    background-color: #5fe4fb4a;
-    transition: background-color 0.5s ease;
+    min-width: 225px;
+    max-width: 28%;
+    color: white;
+    background-color: #ffffff50;
+    transition: background-color 0.5s ease; 
+}
+
+.playlist-grid-image{
+    width:100%;
+    object-fit: fill;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+}
+
+
+.playlist-info a{
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: 200;
+    color: inherit;
+}
+
+.playlist-info{
+    text-decoration: none !important;
+    font-family: 'Montserrat', sans-serif;
+    padding-top: 10px;
+    font-size: 16px;
+    padding-bottom:30px;
+    color: inherit;
+    
 }
 
 .playlist-grid-item:hover {
@@ -158,92 +226,62 @@ h1:hover:after {
     max-width: 100%;
 }
 
-.playlist-grid-item h3 {
-    margin-top: 10px;
-    font-size: 18px;
-    text-decoration: none;
-}
-
-
-.side-container {
-    display: flex;
-    justify-content: flex-start;
-    overflow-y: scroll;
-}
-
-aside {
-    padding: 10px 20px;
-    background-color: #a03eb954;
-    max-width: 22vw;
-    color: #fff;
-    margin: 15% 60px 20px 30px;
-    max-height: calc(100vh - 20%);
-    position: fixed;
-    overflow-y: scroll;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-
-}
-
-aside::-webkit-scrollbar {
-    width: 8px;
-}
-
-aside::-webkit-scrollbar-track {
-    background: #f1f1f1;
-}
-
-aside::-webkit-scrollbar-thumb {
-    background-color: #43245c;
-    border-radius: 10px;
-    border: 2px solid #f1f1f1;
-}
-
 .sep-font {
-    font-family: 'Staatliches', cursive;
-    color: #5fe4fbc6;
-    font-size: 28px;
+    color: #fff;
+    font-size: 22px;
 }
 
-.sep-font2 {
-    font-family: 'Monda', sans-serif;
-    color: #5fe4fbc6;
-    font-size: 18px;
+.title{
+    text-align: center;
 }
-
+hr{
+    background-color: #fff;
+    width: 100%;
+}
 
 .playlist-stats {
     display: flex;
     justify-content: space-around;
+    
 }
 
-.likes,
+
+.likes {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 15;
+    left: 15;
+}
+
+
 .comments {
     display: flex;
     align-items: center;
+    position: absolute;
+    bottom: 15;
+    right: 15;
 }
+
 
 .likes button,
 .comments button {
-    background-color: #c81ce374;
+   
     border: none;
-    border-radius: 50%;
-    height: 35px;
-    width: 35px;
+    background-color: transparent;
+    color:white;
+    height: 30px;
+    width: 30px;
     justify-content: center;
     align-items: center;
-}
+} 
 
 i {
-    height: 20px;
-    width: 20px;
-    color: rgba(95, 228, 251, 0.971)6;
-    padding-top: 5px;
+   font-size: 24px;
 }
 
 .num-likes {
-    padding-left: 10px;
+    padding-left: 8px;
 }
 
 .spotify-btn {
@@ -352,4 +390,32 @@ i {
     font-size: 30px;
     cursor: pointer;
 
+}
+
+@media only screen and (max-width: 600px) {
+    #main-container{
+    flex-direction: column;
+    height: 100%;
+    
+    }
+    
+    #info-container{
+        width: 80%;
+        position:unset;
+        margin: auto;
+    
+        
+    }
+    #playlist-container{
+       width: 100%;
+       margin-left: 20px ;
+       margin:auto;
+       margin-top: 20px;
+    }
+    .playlist-grid-item {
+        min-width: 80%;
+    }
+    .comment-popup {
+        width: 90%;
+    }
 }
