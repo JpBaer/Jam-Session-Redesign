@@ -91,14 +91,20 @@
   
 <div id = "main-container">
     <div id = "info-container">
-        <p id="user-welcome">Welcome, <span class="username">{{username}}</span>!</p>
+        {{!-- <p id="user-welcome">Welcome, <span class="username">{{username}}</span>!</p> --}}
+            <div class = "title">
+            <hr>
             <h2><span class="sep-font">Today's Song Picks</span></h2>
             <hr>
+            </div>
             {{#each random_Songs.random_Songs as |randomSong|}}
             <p>{{randomSong.[0]}} - {{randomSong.[1]}}</p>
             {{/each}}
+            <div class = "title">
             <hr>
             <h2><span class="sep-font">Today's Artist Picks</span></h2>
+            <hr>
+            </div>
             {{#each random_Artists.random_Artists as |randomArtist|}}
             <p>{{randomArtist}}</p>
             {{/each}}

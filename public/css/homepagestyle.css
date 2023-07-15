@@ -4,9 +4,18 @@ body {
     margin: 0;
     padding: 0;
     /* background-image: linear-gradient(to left, #43245c, #b66aeb, #7484e7, #24396c); */
-    background-image: linear-gradient(to right, #00C4CC, #7C2AE8)
+    background-image: linear-gradient(to right, #00C4CC, #7C2AE8);
 
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  
 }
+
+body::-webkit-scrollbar {
+    display: none;
+  }
+  
+
 
 .navbar {
     position: fixed;
@@ -68,7 +77,7 @@ body {
     padding: 20px;
     color: white;
     position:fixed;
-    overflow-y: auto
+    /* overflow-y: auto */
 }
 #playlist-container{
     width:66%;
@@ -80,21 +89,20 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    overflow-y:auto;
+    /* overflow-y:auto; */
 }
 
 #user-welcome {
     font-size: 15px;
-    color: #c81ce3b0;
-    font-family: 'Monda', sans-serif;
-    text-shadow: .5px .5px #43245c;
+    color: #fff;
     align-content: center;
 }
 
 .username {
-    font-family: 'Staatliches', cursive;
-    color: #5fe4fbda;
+    color: #fff;
+    /* text-shadow: 1px 1px 10px #7c2ae878; */
     font-size: 20px;
+    font-weight: 500;
 }
 
 .logout-btn,
@@ -202,11 +210,19 @@ button:hover {
 
 } */
 
-/* .sep-font {
-    font-family: 'Staatliches', cursive;
-    color: #5fe4fbc6;
-    font-size: 40px;
-} */
+.sep-font {
+    color: #fff;
+    font-size: 22px;
+}
+
+.title{
+    text-align: center;
+}
+
+.title hr{
+    background-color: #fff;
+    width: 75%;
+}
 
 .playlist-stats {
     display: flex;
@@ -328,4 +344,29 @@ a {
     font-size: 30px;
     cursor: pointer;
 
+}
+
+@media only screen and (max-width: 600px) {
+    #main-container{
+    flex-direction: column;
+    height: 100%;
+    
+    }
+    
+    #info-container{
+        width: 80%;
+        position:unset;
+        margin: auto;
+    
+        
+    }
+    #playlist-container{
+       width: 100%;
+       margin-left: 20px ;
+       margin:auto;
+       margin-top: 20px;
+    }
+    .playlist-grid-item {
+        min-width: 80%;
+    }
 }
