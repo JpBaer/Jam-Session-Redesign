@@ -89,8 +89,57 @@
     </div>
 </nav>
   
+<div id = "main-container">
+    <div id = "info-container">
+        <p id="user-welcome">Welcome, <span class="username">{{username}}</span>!</p>
+            <h2><span class="sep-font">Today's Song Picks</span></h2>
+            <hr>
+            {{#each random_Songs.random_Songs as |randomSong|}}
+            <p>{{randomSong.[0]}} - {{randomSong.[1]}}</p>
+            {{/each}}
+            <hr>
+            <h2><span class="sep-font">Today's Artist Picks</span></h2>
+            {{#each random_Artists.random_Artists as |randomArtist|}}
+            <p>{{randomArtist}}</p>
+            {{/each}}
+    </div>
+    <div id = "playlist-container">
+        {{#each playlists as |playlist|}}
+            <div class="playlist-grid-item">
+                <div class = "playlist-grid-image">
+                <img src="{{playlist.image_url}}" alt="{{playlist.name}}">
+                </div>
+                <div class="playlist-info">
+                    <h3><a href="{{playlist.playlist_url}}" target="_blank"><span
+                                class="play-name">{{playlist.name}}</span></a></h3>
+                    <p>{{playlist.description}}</p>
 
-    <div class="containerAside">
+                    <div class="playlist-stats">
+                        <div class="likes">
+                            <button class="like-btn" data-playlist-id="{{playlist.playlist_id}}">
+                                <i class="fa-sharp fa-regular fa-heart" data-playlist-id="{{playlist.playlist_id}}"></i>
+                            </button>
+                            <span class="num-likes">{{playlist.likes}}</span>
+                        </div>
+                        <div class="comments">
+                            <button class="comment-btn" data-playlist-id="{{playlist.playlist_id}}">
+                                <i class="fa-sharp fa-regular fa-comment"
+                                    data-playlist-id="{{playlist.playlist_id}}"></i>
+                            </button>
+
+
+                            <span class="num-comments">{{playlist.comments}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+    </div>
+
+</div>
+
+
+    {{!-- <div class="containerAside">
         <aside>
              <p id="user-welcome">Welcome, <span class="username">{{username}}</span>!</p>
             <h2><span class="sep-font">Today's Song Picks</span></h2>
@@ -134,7 +183,7 @@
             </div>
             {{/each}}
         </div>
-    </div>
+    </div> --}}
 
     <script src="/logout.js"></script>
 
