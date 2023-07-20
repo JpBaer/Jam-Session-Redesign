@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Friend} = require('../../models');
+const {Friend, Notification} = require('../../models');
 
 router.post('/', async(req, res) => {
     try{
@@ -10,6 +10,12 @@ router.post('/', async(req, res) => {
             friend_id: req.body.friend_id,
             status: 'pending'
         });
+
+        
+        const notificationData = await Notification.create({
+            message: `You have a new friend request`,
+            user_id: req.body.friend_id
+        })
         res.status(200).json(friendData);
     } catch(err)
     {
@@ -26,10 +32,15 @@ router.post('/accept', async(req, res) => {
         },
         {
             where: {
-                user_id: req.session.user_id,
-                friend_id: req.body.friend_id
+                user_id: req.body.friend_id,
+                friend_id: req.session.user_id
             }
         });
+         
+        const notificationData = await Notification.create({
+            message: `Your friend request was accepted`,
+            user_id: req.body.friend_id
+        })
         res.status(200).json(friendData)
     } catch(err)
     {
@@ -44,10 +55,14 @@ router.post('/decline', async(req, res) => {
         const friendData = await Friend.destroy(
         {
             where: {
-                user_id: req.session.user_id,
-                friend_id: req.body.friend_id
+                user_id: req.body.friend_id,
+                friend_id: req.session.user_id
             }
         });
+        const notificationData = await Notification.create({
+            message: `Your friend request was declined`,
+            user_id: req.body.friend_id
+        })
         res.status(200).json(friendData)
     } catch(err)
     {
