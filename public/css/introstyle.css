@@ -21,22 +21,31 @@ h4 {
 
 .full-screen-video-container {
 
-    height: 100%;
+    height: 100vh;
     width: 100%;
     overflow: hidden;
 }
 
-.full-screen-video-container video {
+.full-screen-video-container video{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+/* .full-screen-video-container video {
     z-index: -1;
     position: absolute;
     height: auto;
     width: auto;
     min-width: 100%;
-    min-height: 100%;
+    min-height: 100vh;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
+} */
 
 .btn {
     position: relative;
@@ -66,7 +75,7 @@ button:active {
     cursor: pointer;
 }
 
-.btn-1 {
+.btn-1 .btn-2{
     margin-bottom: 35px;
 
 }
@@ -98,3 +107,4 @@ button:active {
     border: 1px solid #24396c;
     transform: rotateX(90deg) translateZ(25px);
     font-size: 22px;
+}

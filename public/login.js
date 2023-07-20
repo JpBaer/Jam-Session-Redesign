@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
         // If successful, redirect the browser to the profile page
         document.location.replace('/home');
       } else {
-        alert(response.statusText);
+        alert('Incorrect username or password');
       }
     }
   };
@@ -28,7 +28,10 @@ const loginFormHandler = async (event) => {
     const username = document.querySelector('#name-signup').value.trim();
     const email = document.querySelector('#email-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
-  
+    const passwordConfirm = document.querySelector('#password-confirm').value.trim();
+
+
+    if(password === passwordConfirm){
     if (username && email && password) {
       const response = await fetch('/api/user', {
         method: 'POST',
@@ -42,6 +45,9 @@ const loginFormHandler = async (event) => {
         alert(response.statusText);
       }
     }
+  }else{
+    alert('Passwords do not match')
+  }
   };
   
   document

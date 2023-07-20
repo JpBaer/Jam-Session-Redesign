@@ -67,14 +67,22 @@ body::-webkit-scrollbar {
 
 .logo {
     font-family: 'League Spartan', sans-serif;
-    font-weight: 500;
+    /* font-family: 'Staatliches', cursive; */
+    font-weight: 700;
     font-size: 50;
     /* padding-left: 50px; */
     /* text-shadow: 1px 1px 5px #0d050f1b; */
     color: #ffffff;
-    opacity: 100%;
+    /* color: #c81ce3; */
+    /* opacity: 80%; */
+    text-shadow: 2px 2px 3px #0d050f5a;
+    /* opacity: 100%; */
     padding-bottom: -200px;
     /* border-bottom: solid 1px white; */
+}
+
+.logo:hover{
+    color:white;
 }
 
 #main-container{
@@ -125,6 +133,7 @@ body::-webkit-scrollbar {
     flex-wrap: wrap;
     justify-content: flex-start;
     color: #FFF;
+    margin-bottom: 10px;
     
 }
 
@@ -138,6 +147,22 @@ body::-webkit-scrollbar {
     color: #fff
 }
 
+.spotify-button{
+    background-color: transparent;
+    border: none;
+    border: solid 1px #fff;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+
+.button-image{
+    height: 100%;
+}
 #spotify-info{
     padding-left: 20px;
     /* margin-bottom: 40px; */
@@ -284,32 +309,6 @@ i {
     padding-left: 8px;
 }
 
-.spotify-btn {
-    height: 60px;
-    width: 140px;
-    text-align: center;
-    transform-style: preserve-3d;
-    transition: transform 400ms ease-in-out;
-    transform: translateZ(-75px);
-    margin: 0 auto;
-
-}
-
-.spotify-btn:active {
-    background: #7484e7;
-    -webkit-box-shadow: inset 0px 0px 5px #b66aeb;
-    -moz-box-shadow: inset 0px 0px 5px #b66aeb;
-    box-shadow: inset 0px 0px 5px #b66aeb;
-    outline: none;
-    color: azure;
-}
-
-.spotify-btn:hover {
-    transform: rotateX(-90deg) translateY(25px);
-    cursor: pointer;
-    height: 60px;
-    width: 140px;
-}
 
 
 .side {
@@ -356,27 +355,35 @@ i {
     display: none;
     position: fixed;
     top: 50%;
-    left: 60%;
+    left: 50%;
     transform: translate(-50%, -50%);
-    padding: 20px;
-    background-image: linear-gradient(to left, #d8bbec, #bbc0e4);
-    box-shadow: 0 0 20px #43245c;
-    color: #24396c;
+    background-image: linear-gradient(to right, #7C2AE8, #7C2AE8);
+    border-radius: 10px;
+    color: #ffffff;
     z-index: 9999;
 }
 
-.comment-btn {
+.modal-color{
+    height:100%;
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff70;
+    border-radius: 10px;
+}
+
+.comment-form button {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    color: white;
+    border: solid white;
+    border-radius: 5px;
 }
 
 .modal-header {
     text-align: center;
     font-size: 22px;
-    text-shadow: 1px 1px #0d050f;
-    color: #c81ce3;
-    opacity: 70%;
+    opacity: 100%;
 }
 
 .comments-list {
@@ -389,7 +396,7 @@ i {
     right: 10px;
     font-size: 30px;
     cursor: pointer;
-
+    color: #fff;
 }
 
 @media only screen and (max-width: 600px) {
@@ -412,10 +419,26 @@ i {
        margin:auto;
        margin-top: 20px;
     }
+
+    #right-side{
+        width: 100%;
+        margin-left: 20px ;
+        margin:auto;
+        margin-top: 90px;
+     }
+
+     #user-info{
+        justify-content: center;
+        text-align: center;
+     }
+
     .playlist-grid-item {
         min-width: 80%;
     }
     .comment-popup {
         width: 90%;
+    }
+    .logo{
+        font-size: 40px;
     }
 }

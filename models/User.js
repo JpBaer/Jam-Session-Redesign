@@ -40,6 +40,7 @@ User.init(
             allowNull: true,
         },
         
+        //Need to make these embedded objects to store the spotify url
         top_songs: {
         type: DataTypes.STRING,
         allowNull: true

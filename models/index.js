@@ -1,8 +1,10 @@
 const User = require('./User');
 const Playlist = require('./Playlist');
 const Comment = require('./Comment');
-const Message = require('./Message')
-const Conversation = require('./Conversation')
+const Message = require('./Message');
+const Conversation = require('./Conversation');
+const Notification = require('./Notification');
+const Friend = require('./Friend');
 
 User.hasMany(Playlist, {
     foreignKey: 'user_id',
@@ -77,4 +79,17 @@ Conversation.belongsTo(User, {as: 'Creator', foreignKey: 'user1', allowNull: fal
 
 Conversation.belongsTo(User, {as: 'Recipient', foreignKey: 'user2', allowNull: false});
 
-module.exports = { User, Playlist, Comment, Message, Conversation };
+//Friend Feature Associations
+
+User.belongsToMany(User, {
+    through: Friend,
+    as: 'friend',
+    foreignKey: 'user_id',
+    otherKey: 'friend_id'
+});
+
+
+User.hasMany(Notification)
+
+
+module.exports = { User, Playlist, Comment, Message, Conversation, FriendRequest, Notification };

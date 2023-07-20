@@ -5,7 +5,9 @@
 
 <body>
 
+
     <div class="comment-popup">
+        <div class = "modal-color">
         <div class="modal-header">
             <h3>Comments</h3>
             <span class="close">&times;</span>
@@ -20,6 +22,7 @@
             <div class="comments-list">
 
             </div>
+        </div>
         </div>
     </div>
 
@@ -54,6 +57,11 @@
                     <i class="fa fa-envelope"></i>
                     </a>
                 </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/conversations">
+                    <i class="fa-regular fa-bell" style = "colorL: #ffffff"></i>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/user/{{id}}">Profile</a>
                 </li>
@@ -71,7 +79,7 @@
     <div id = "info-container">
         {{!-- <p id="user-welcome">Welcome, <span class="username">{{username}}</span>!</p> --}}
             <div class = "title">
-            <h2 class="sep-font">Current Favorites</h2>
+            <h2 class="sep-font">Most Listened To</h2>
             <hr>
             <h2><span class="sep-font">Songs</span></h2>
             <hr>
@@ -93,6 +101,7 @@
         <div id = "user-info">
             <img id="profile-picture" src="{{profile_picture_url}}">
             <div id = "spotify-info">
+           <a href = "/spotifylogin"> <button class = "spotify-button"> <img src = "/Spotify_Logo_RGB_White.png" alt = "Spotify Logo" class = "button-image"></button></a>
             {{!-- <a href="/spotifylogin">
                 <div class="spotify-btn">
                     <button class="side default-side">Connect with Spotify</button>
