@@ -10,7 +10,7 @@ router.use('/user', userRoutes);
 router.use('/playlist', playlistRoutes)
 router.use('/comment',commentRoutes)
 router.use('/conversation', conversationRoutes)
-router.use('/friend',friendRoutes.js)
+router.use('/friend',friendRoutes)
 // router.use('/ourmodel', modelroutes);
 
 

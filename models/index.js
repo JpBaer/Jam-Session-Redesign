@@ -92,4 +92,4 @@ User.belongsToMany(User, {
 User.hasMany(Notification)
 
 
-module.exports = { User, Playlist, Comment, Message, Conversation, FriendRequest, Notification };
+module.exports = { User, Playlist, Comment, Message, Conversation, Friend, Notification };
