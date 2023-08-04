@@ -22,7 +22,7 @@ Notification.init({
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'friend',
+        modelName: 'notification',
 })
 
 module.exports = Notification

@@ -6,15 +6,16 @@ router.post('/', async(req, res) => {
         console.log('New friend request sent')
         console.log(req.body)
         const friendData = await Friend.create({
-            user_id: req.session.user_id,
-            friend_id: req.body.friend_id,
+            // requester_id: req.session.user_id,
+            requester_id: req.body.requester_id,
+            accepter_id: req.body.accepter_id,
             status: 'pending'
         });
 
         
         const notificationData = await Notification.create({
             message: `You have a new friend request`,
-            user_id: req.body.friend_id
+            user_id: req.body.accepter_id
         })
         res.status(200).json(friendData);
     } catch(err)
@@ -23,7 +24,7 @@ router.post('/', async(req, res) => {
     }
 })
 
-router.post('/accept', async(req, res) => {
+router.put('/accept', async(req, res) => {
     try{
         console.log('Friend request accepted')
         
@@ -32,14 +33,15 @@ router.post('/accept', async(req, res) => {
         },
         {
             where: {
-                user_id: req.body.friend_id,
-                friend_id: req.session.user_id
+                requester_id: req.body.requester_id,
+                // accepter_id: req.session.user_id
+                accepter_id: req.body.accepter_id
             }
         });
          
         const notificationData = await Notification.create({
             message: `Your friend request was accepted`,
-            user_id: req.body.friend_id
+            user_id: req.body.requester_id
         })
         res.status(200).json(friendData)
     } catch(err)
@@ -48,20 +50,21 @@ router.post('/accept', async(req, res) => {
     }
 })
 
-router.post('/decline', async(req, res) => {
+router.put('/decline', async(req, res) => {
     try{
         console.log('Friend request declined')
         
         const friendData = await Friend.destroy(
         {
             where: {
-                user_id: req.body.friend_id,
-                friend_id: req.session.user_id
+                requester_id: req.body.requester_id,
+                // accepter_id: req.session.user_id
+                accepter_id: req.body.accepter_id
             }
         });
         const notificationData = await Notification.create({
             message: `Your friend request was declined`,
-            user_id: req.body.friend_id
+            user_id: req.body.requester_id
         })
         res.status(200).json(friendData)
     } catch(err)
@@ -69,3 +72,5 @@ router.post('/decline', async(req, res) => {
         res.json(err)
     }
 })
+
+module.exports = router

@@ -83,10 +83,18 @@ Conversation.belongsTo(User, {as: 'Recipient', foreignKey: 'user2', allowNull: f
 
 User.belongsToMany(User, {
     through: Friend,
-    as: 'friend',
-    foreignKey: 'user_id',
-    otherKey: 'friend_id'
+    as: 'requesterer',
+    foreignKey: 'requester_id',
+    otherKey: 'accepter_id'
 });
+
+User.belongsToMany(User, {
+    through: Friend,
+    as: 'accepter',
+    foreignKey: 'accepter_id',
+    otherKey: 'requester_id'
+});
+
 
 
 User.hasMany(Notification)
