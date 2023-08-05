@@ -431,6 +431,37 @@ i {
     font-size: 18px;
 }
 
+.friend-block .accept-button {
+    background: none;
+    border: none;
+    color:#00C4CC;
+    border: solid 1px #00C4CC;
+    padding-left:10px;
+    padding-right:10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.friend-block .decline-button {
+    background: none;
+    border: none;
+    color:#43245c;
+    border: solid 1px #43245c;
+    padding-left:10px;
+    padding-right:10px;
+    border-radius: 10px;
+    margin-right: 20px;
+    font-size: 12px;
+}
+
+
+.friend-block p{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
 .friend-image {
     height: 60px; 
     width: 60px;

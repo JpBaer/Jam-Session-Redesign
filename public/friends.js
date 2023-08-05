@@ -4,7 +4,10 @@ const friendButton = document.querySelector('.friendButton');
 const friendToggle = document.querySelector('.friend-toggle');
 const pendingToggle = document.querySelector('.pending-toggle');
 const acceptedFriends = document.querySelector('.accepted-friends');
-const pendingFriends = document.querySelector('.pending-friends')
+const pendingFriends = document.querySelector('.pending-friends');
+const acceptButtons = document.querySelectorAll('.accept-button');
+const declineButtons = document.querySelectorAll('.decline-button')
+
 
 
 friendToggle.addEventListener('click', () => {
@@ -32,6 +35,20 @@ window.addEventListener('click', event => {
     }
 });
 
+acceptButtons.forEach(acceptButton => {
+   acceptButton.addEventListener('click', () => {
+    var requester_id = acceptButton.getAttribute("data-requester-id")
+    console.log('Accept Friend Clicked')
+    acceptFriend(requester_id)
+   })
+})
+
+declineButtons.forEach(declineButton => {
+    declineButton.addEventListener('click', () => {
+     var requester_id = acceptButton.getAttribute("data-requester-id")
+     declineFriend(requester_id)
+    })
+ })
 
 
 const requestFriend = async(profile_id) => {
@@ -53,9 +70,10 @@ const requestFriend = async(profile_id) => {
 //Is this the correct ID? and how do we get that id from the front end?
 const acceptFriend = async(profile_id) => {
     console.log('Friend Request Accepted')
-    const response = await fetch('api/friend/accept', {
+    console.log(profile_id)
+    const response = await fetch('/api/friend/accept', {
         method: 'PUT',
-        body: JSON.stringify({profile_id}),
+        body: JSON.stringify({"requester_id": profile_id}),
         headers: {'Content-Type': 'application/json'}
     });
 
@@ -68,9 +86,9 @@ const acceptFriend = async(profile_id) => {
 
 const declineFriend = async(profile_id) => {
     console.log('Friend Request Accepted')
-    const response = await fetch('api/friend/decline', {
+    const response = await fetch('/api/friend/decline', {
         method: 'PUT',
-        body: JSON.stringify({profile_id}),
+        body: JSON.stringify({"requester_id": profile_id}),
         headers: {'Content-Type': 'application/json'}
     });
 

@@ -36,23 +36,23 @@
         <div class="modal-body">
             <div class = "friends-modal-toggles">
             <button class = "friend-toggle">Friends</button>
-            <button class = "pending-toggle">Pending</button>
+            <button class = "pending-toggle">Pending ( {{totalPending}} )</button>
             </div>
             <div class = "accepted-friends">
                 {{#each acceptedFriends as |acceptedFriend|}}
                 {{#if acceptedFriend.accepter}}
                
-                    <a class = 'friend-block' href = '/user/{{acceptedFriend.accepter.id}}'>
+                    <div class = 'friend-block' >
                     <img class = "friend-image" src = {{acceptedFriend.accepter.profile_picture_url}}>
-                    <p>{{acceptedFriend.accepter.username}}</p>
-                    </a>
+                   <a href = '/user/{{acceptedFriend.accepter.id}}'><p>{{acceptedFriend.accepter.username}}</p></a>
+                    </div>
         
                 {{else}}
                
-                    <a class = 'friend-block' href = '/user/{{acceptedFriend.requester.id}}'>
+                    <div class = 'friend-block'>
                     <img class = "friend-image" src = {{acceptedFriend.requester.profile_picture_url}}>
-                    <p>{{acceptedFriend.requester.username}}</p>
-                    </a>
+                    <a href = '/user/{{acceptedFriend.requester.id}}'><p>{{acceptedFriend.requester.username}}</p></a>
+                    </div>
             
                 {{/if}}
                 {{/each}}
@@ -62,11 +62,12 @@
                 {{#each pendingFriends as |pendingFriend|}}
                 {{#if pendingFriend.requester}}
                
-                    <a class = 'friend-block' href = '/user/{{pendingFriend.requester.id}}'>
+                    <div class = 'friend-block'>
                     <img class = "friend-image" src = {{pendingFriend.requester.profile_picture_url}}>
-                    <p>{{pendingFriend.requester.username}}</p>
-                    {{!-- <button>Accept Request</button> --}}
-                    </a>
+                    <a  href = '/user/{{pendingFriend.requester.id}}'><p>{{pendingFriend.requester.username}}</p></a>
+                    <button class = "accept-button" data-requester-id = "{{pendingFriend.requester.id}}">Accept</button>
+                    <button class = "decline-button" data-requester-id = "{{pendingFriend.requester.id}}">Decline</button>
+                    </div>
             
                 {{/if}}
                 {{/each}}

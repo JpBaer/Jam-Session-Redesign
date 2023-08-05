@@ -6,8 +6,8 @@ router.post('/', async(req, res) => {
         console.log('New friend request sent')
         console.log(req.body)
         const friendData = await Friend.create({
-            // requester_id: req.session.user_id,
-            requester_id: req.body.requester_id,
+            requester_id: req.session.user_id,
+            // requester_id: req.body.requester_id,
             accepter_id: req.body.accepter_id,
             status: 'pending'
         });
@@ -34,8 +34,8 @@ router.put('/accept', async(req, res) => {
         {
             where: {
                 requester_id: req.body.requester_id,
-                // accepter_id: req.session.user_id
-                accepter_id: req.body.accepter_id
+                accepter_id: req.session.user_id
+                // accepter_id: req.body.accepter_id
             }
         });
          
@@ -58,8 +58,8 @@ router.put('/decline', async(req, res) => {
         {
             where: {
                 requester_id: req.body.requester_id,
-                // accepter_id: req.session.user_id
-                accepter_id: req.body.accepter_id
+                accepter_id: req.session.user_id
+                // accepter_id: req.body.accepter_id
             }
         });
         const notificationData = await Notification.create({
