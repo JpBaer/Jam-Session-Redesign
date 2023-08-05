@@ -1,3 +1,20 @@
+const friendPopup = document.querySelector('.friends-popup');
+const closeBtn = document.querySelector('.friendClose');
+const friendButton = document.querySelector('.friendButton')
+
+
+friendButton.addEventListener('click', () => {
+    friendPopup.style.display = 'block'
+})
+
+window.addEventListener('click', event => {
+    if (event.target === closeBtn) {
+        friendPopup.style.display = 'none';
+    }
+});
+
+
+
 const requestFriend = async(profile_id) => {
     console.log('Friend Request Button Created')
     const response = await fetch('/api/friend',{
@@ -50,3 +67,4 @@ document.getElementById('add-friend-button').addEventListener('click', function(
     const profileId = e.target.getAttribute('data-id');
     requestFriend(profileId)
 })
+

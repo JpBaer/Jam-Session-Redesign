@@ -26,6 +26,37 @@
         </div>
     </div>
 
+    <div class = "friends-popup">
+          <div class = "modal-color">
+        <div class="modal-header">
+            <h3>{{username}}'s Friends</h3>
+            <span class="friendClose">&times;</span>
+        </div>
+        <div class="modal-body">
+            
+            
+                {{#each acceptedFriends as |acceptedFriend|}}
+                {{#if acceptedFriend.accepter}}
+               
+                    <a class = 'friend-block' href = '/user/{{acceptedFriend.accepter.id}}'>
+                    <img class = "friend-image" src = {{acceptedFriend.accepter.profile_picture_url}}>
+                    <p>{{acceptedFriend.accepter.username}}</p>
+                    </a>
+        
+                {{else}}
+               
+                    <a class = 'friend-block' href = '/user/{{acceptedFriend.requester.id}}'>
+                    <img class = "friend-image" src = {{acceptedFriend.requester.profile_picture_url}}>
+                    <p>{{acceptedFriend.requester.username}}</p>
+                    </a>
+            
+                {{/if}}
+                {{/each}}
+            
+        </div>
+        </div>
+    </div>
+
     {{!-- <div class="container">
         <div class="logo">
             <a href="/home">
@@ -110,7 +141,7 @@
             </a> --}}
             {{!-- <h3>{{spotify_id}}: </h3> --}}
             <p>{{username}} has {{followers}} followers on Spotify</p>
-            <p>{{totalFriends}} Friends</p>
+            <button class = "friendButton"><p>{{totalFriends}} Friends</p></button>
             <p>{{totalPlaylists}} Playlists</p>
             <div>
                 <button class = "profile-button" id = "add-friend-button" data-id = ${{id}}>Add Friend</button>

@@ -181,11 +181,12 @@ router.get('/user/:id', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
    
-    // console.log(user.requester[0].accepter)
+  
 
     const acceptedFriends = user.requester.filter((friend) => friend.status === 'accepted').concat(user.accepter.filter((friend) => friend.status === 'accepted'))
     const pendingFriends = user.requester.filter((friend) => friend.status === 'pending').concat(user.accepter.filter((friend) => friend.status === 'pending'))
-    // console.log(pendingFriends)
+    console.log('*********************')
+    console.log(acceptedFriends)
     const totalFriends = acceptedFriends.length;
     const totalPending = pendingFriends.length;
     const totalPlaylists = user.playlists.length;

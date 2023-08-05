@@ -363,6 +363,29 @@ i {
     z-index: 9999;
 }
 
+.friends-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(to right, #7C2AE8, #7C2AE8);
+    border-radius: 10px;
+    color: #ffffff;
+    z-index: 9999;
+    max-height: 80%;
+}
+
+.friendButton {
+    margin: 0;
+    padding: 0;
+    background: none;
+    background-color: none;
+    border: none;
+    text-align: center;
+    color: #ffffff;
+}
+
 .modal-color{
     height:100%;
     width: 100%;
@@ -390,7 +413,39 @@ i {
     overflow-y: scroll;
 }
 
+.friends-list {
+    overflow-y: scroll;
+}
+
+.friend-block {
+    height: 60px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    color: #43245c;
+}
+
+.friend-image {
+    height: 60px; 
+    width: 60px;
+    object-fit: cover;
+    margin-right: 30px;
+}
+
 .comment-popup .close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.friends-popup .friendClose {
     position: absolute;
     top: 5px;
     right: 10px;
