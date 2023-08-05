@@ -1,6 +1,25 @@
 const friendPopup = document.querySelector('.friends-popup');
 const closeBtn = document.querySelector('.friendClose');
-const friendButton = document.querySelector('.friendButton')
+const friendButton = document.querySelector('.friendButton');
+const friendToggle = document.querySelector('.friend-toggle');
+const pendingToggle = document.querySelector('.pending-toggle');
+const acceptedFriends = document.querySelector('.accepted-friends');
+const pendingFriends = document.querySelector('.pending-friends')
+
+
+friendToggle.addEventListener('click', () => {
+    acceptedFriends.style.display = 'block'
+    pendingFriends.style.display = 'none'
+    friendToggle.style.color = "#00C4CC"
+    pendingToggle.style.color = "#43245c"
+})
+
+pendingToggle.addEventListener('click', () => {
+    pendingFriends.style.display = 'block'
+    acceptedFriends.style.display = 'none'
+    pendingToggle.style.color = "#00C4CC"
+    friendToggle.style.color = "#43245c"
+})
 
 
 friendButton.addEventListener('click', () => {

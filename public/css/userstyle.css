@@ -194,6 +194,7 @@ h1:hover:after {
     height: 200px;
     width: 200px;
     margin-bottom: 10px;
+    object-fit: cover;
 }
 
 .playlist-grid {
@@ -369,9 +370,9 @@ i {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: linear-gradient(to right, #7C2AE8, #7C2AE8);
+    background-image: linear-gradient(to right, #f5f5f5, #f5f5f5);
     border-radius: 10px;
-    color: #ffffff;
+    color: #43245c;
     z-index: 9999;
     max-height: 80%;
 }
@@ -427,6 +428,7 @@ i {
     text-align: center;
     background-color: #fff;
     color: #43245c;
+    font-size: 18px;
 }
 
 .friend-image {
@@ -451,7 +453,33 @@ i {
     right: 10px;
     font-size: 30px;
     cursor: pointer;
-    color: #fff;
+    color: #43245c;
+}
+
+.accepted-friends {
+    display: block;
+}
+
+.pending-friends {
+    display: none;
+}
+
+.friends-modal-toggles {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.friends-modal-toggles button {
+    background-color: none;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.friend-toggle{
+    color:#00C4CC
 }
 
 @media only screen and (max-width: 600px) {

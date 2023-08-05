@@ -28,13 +28,17 @@
 
     <div class = "friends-popup">
           <div class = "modal-color">
-        <div class="modal-header">
+            <div class="modal-header">
             <h3>{{username}}'s Friends</h3>
             <span class="friendClose">&times;</span>
-        </div>
+          
+            </div>
         <div class="modal-body">
-            
-            
+            <div class = "friends-modal-toggles">
+            <button class = "friend-toggle">Friends</button>
+            <button class = "pending-toggle">Pending</button>
+            </div>
+            <div class = "accepted-friends">
                 {{#each acceptedFriends as |acceptedFriend|}}
                 {{#if acceptedFriend.accepter}}
                
@@ -53,8 +57,23 @@
                 {{/if}}
                 {{/each}}
             
+            </div>
+         <div class = "pending-friends">
+                {{#each pendingFriends as |pendingFriend|}}
+                {{#if pendingFriend.requester}}
+               
+                    <a class = 'friend-block' href = '/user/{{pendingFriend.requester.id}}'>
+                    <img class = "friend-image" src = {{pendingFriend.requester.profile_picture_url}}>
+                    <p>{{pendingFriend.requester.username}}</p>
+                    {{!-- <button>Accept Request</button> --}}
+                    </a>
+            
+                {{/if}}
+                {{/each}}
+            
         </div>
         </div>
+    </div>
     </div>
 
     {{!-- <div class="container">
