@@ -81,19 +81,24 @@ Conversation.belongsTo(User, {as: 'Recipient', foreignKey: 'user2', allowNull: f
 
 //Friend Feature Associations
 
-User.belongsToMany(User, {
-    through: Friend,
-    as: 'requesterer',
-    foreignKey: 'requester_id',
-    otherKey: 'accepter_id'
-});
+// User.belongsToMany(User, {
+//     through: Friend,
+//     as: 'requester',
+//     foreignKey: 'requester_id',
+//     otherKey: 'accepter_id'
+// });
 
-User.belongsToMany(User, {
-    through: Friend,
-    as: 'accepter',
-    foreignKey: 'accepter_id',
-    otherKey: 'requester_id'
-});
+// User.belongsToMany(User, {
+//     through: Friend,
+//     as: 'accepter',
+//     foreignKey: 'accepter_id',
+//     otherKey: 'requester_id'
+// });
+
+User.hasMany(Friend, { as: 'requester', foreignKey: 'requester_id' });
+User.hasMany(Friend, { as: 'accepter', foreignKey: 'accepter_id' });
+Friend.belongsTo(User, { as: 'requester', foreignKey: 'requester_id' });
+Friend.belongsTo(User, { as: 'accepter', foreignKey: 'accepter_id' });
 
 
 

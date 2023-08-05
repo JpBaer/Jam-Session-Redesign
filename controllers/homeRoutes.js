@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { Playlist, User } = require('../models');
+const { Playlist, User, Friend } = require('../models');
 const withAuth = require('../utils/auth');
 const querystring = require('querystring')
 const axios = require('axios');
 const express = require('express');
 const sequelize = require('../config/connection');
+const {Op} = require('sequelize')
 //need to create utils folder that contains auth.js and link it here
 // projectData will need to be replaced with our model later on
 //might need to create helpers and link it here
@@ -164,19 +165,42 @@ router.get('/user/:id', withAuth, async (req, res) => {
         {
           model: Playlist,
         },
+        {
+          model: Friend,
+          as: 'requester',
+          include: [{ model: User, as: 'accepter' }] // Including the accepter User in the requester's Friend data
+        },
+        {
+          model: Friend,
+          as: 'accepter',
+          include: [{ model: User, as: 'requester' }] // Including the requester User in the accepter's Friend data
+        },
       ],
     });
 
-    const user = userData.get({ plain: true });
 
+    const user = userData.get({ plain: true });
+   
+    // console.log(user.requester[0].accepter)
+
+    const acceptedFriends = user.requester.filter((friend) => friend.status === 'accepted').concat(user.accepter.filter((friend) => friend.status === 'accepted'))
+    const pendingFriends = user.requester.filter((friend) => friend.status === 'pending').concat(user.accepter.filter((friend) => friend.status === 'pending'))
+    // console.log(pendingFriends)
+    const totalFriends = acceptedFriends.length;
+    const totalPending = pendingFriends.length;
+    const totalPlaylists = user.playlists.length;
+  
     user.top_songs = JSON.parse(user.top_songs)
     user.top_artists = JSON.parse(user.top_artists)
-    // console.log('*********************')
-    // console.log(user);
-    // console.log('*********************')
+   
 
     res.render('user', {
       ...user,
+      acceptedFriends,
+      pendingFriends,
+      totalFriends,
+      totalPending,
+      totalPlaylists,
       logged_in: req.session.logged_in
     });
   } catch (err) {
