@@ -40,6 +40,12 @@ Friend.init({
         freezeTableName: true,
         underscored: true,
         modelName: 'friend',
+        indexes: [
+            {
+              unique: true,
+              fields: ['requester_id', 'accepter_id'], // Order doesn't matter
+            },
+          ],
 })
 
 module.exports = Friend

@@ -193,9 +193,11 @@ router.get('/user/:id', withAuth, async (req, res) => {
   
     user.top_songs = JSON.parse(user.top_songs)
     user.top_artists = JSON.parse(user.top_artists)
+    const loggedInId = req.session.user_id
    
 
     res.render('user', {
+      loggedInId,
       ...user,
       acceptedFriends,
       pendingFriends,

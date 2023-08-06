@@ -6,7 +6,8 @@ const pendingToggle = document.querySelector('.pending-toggle');
 const acceptedFriends = document.querySelector('.accepted-friends');
 const pendingFriends = document.querySelector('.pending-friends');
 const acceptButtons = document.querySelectorAll('.accept-button');
-const declineButtons = document.querySelectorAll('.decline-button')
+const declineButtons = document.querySelectorAll('.decline-button');
+const requestFriendButton = document.querySelector('#add-friend-button');
 
 
 
@@ -50,12 +51,18 @@ declineButtons.forEach(declineButton => {
     })
  })
 
+ requestFriendButton.addEventListener('click', () => {
+    var accepter_id = requestFriendButton.getAttribute("data-id")
+    requestFriend(accepter_id)
+ })
 
-const requestFriend = async(profile_id) => {
+
+const requestFriend = async(accepter_id) => {
     console.log('Friend Request Button Created')
+    console.log(accepter_id)
     const response = await fetch('/api/friend',{
         method: 'POST',
-        body: JSON.stringify({profile_id}),
+        body: JSON.stringify({"accepter_id": accepter_id}),
         headers: {'Content-Type': 'application/json'}
     });
 
@@ -68,12 +75,12 @@ const requestFriend = async(profile_id) => {
 }
 
 //Is this the correct ID? and how do we get that id from the front end?
-const acceptFriend = async(profile_id) => {
+const acceptFriend = async(requester_id) => {
     console.log('Friend Request Accepted')
-    console.log(profile_id)
+    console.log(requester_id)
     const response = await fetch('/api/friend/accept', {
         method: 'PUT',
-        body: JSON.stringify({"requester_id": profile_id}),
+        body: JSON.stringify({"requester_id": requester_id}),
         headers: {'Content-Type': 'application/json'}
     });
 
@@ -84,7 +91,7 @@ const acceptFriend = async(profile_id) => {
     }
 }
 
-const declineFriend = async(profile_id) => {
+const declineFriend = async(requester_id) => {
     console.log('Friend Request Accepted')
     const response = await fetch('/api/friend/decline', {
         method: 'PUT',
